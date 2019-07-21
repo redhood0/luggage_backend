@@ -1,5 +1,7 @@
 package top.robotman.luggage.bean;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
@@ -7,10 +9,11 @@ import java.io.Serializable;
 public class User implements Serializable {
     /*用户id*/
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
+    @GeneratedValue(generator = "idGenerator")
+    private String  id;
     /*用户名*/
-    @Column(length = 30,nullable = false)
+    @Column(length = 30,unique  = true,nullable = false)
     private String username;
     /*用户密码*/
     private String userpass;
@@ -22,11 +25,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public Long getId() {
+    public String  getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String  id) {
         this.id = id;
     }
 

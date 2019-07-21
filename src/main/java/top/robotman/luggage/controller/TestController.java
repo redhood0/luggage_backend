@@ -15,6 +15,7 @@ import top.robotman.luggage.util.FileUtil;
 import top.robotman.luggage.util.ResultUtil;
 
 import javax.rmi.CORBA.Util;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -32,10 +33,11 @@ public class TestController {
 
 
     @RequestMapping(value = "/test",method = RequestMethod.GET)
-    public List<User> test(){
-        //User user = userService.addUser();
+    public Result test(){
+        UserVO param = new UserVO("aaa","aaa");
+        Result result = userService.addUser(param);
         //userService.searchUser("");
-        return userService.searchUser("");
+        return result;
     }
 
     @RequestMapping(value = "/test01",method = RequestMethod.GET)
@@ -70,16 +72,16 @@ public class TestController {
         return result;
     }
 
-    @RequestMapping(value = "/regist",method = RequestMethod.POST)
-    @ResponseBody
-    public Result test_regist(@RequestBody UserVO param){
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>" + param.getPhonenum()+ ">>>>>>>>>>>>>>>>>>>>>>>>>");
-
-        //User user = userService.addUser();
-        //userService.searchUser("");
-        String str = "程序猿最帅";
-        return  ResultUtil.success(param);
-    }
+//    @RequestMapping(value = "/regist",method = RequestMethod.POST)
+//    @ResponseBody
+//    public Result test_regist(@RequestBody UserVO param){
+//        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>" + param.getPhonenum()+ ">>>>>>>>>>>>>>>>>>>>>>>>>");
+//
+//        //User user = userService.addUser();
+//        //userService.searchUser("");
+//        String str = "程序猿最帅";
+//        return  ResultUtil.success(param);
+//    }
 
 
 
