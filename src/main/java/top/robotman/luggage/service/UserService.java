@@ -10,6 +10,8 @@ import top.robotman.luggage.repository.UserRepository;
 import top.robotman.luggage.util.ResultEnum;
 import top.robotman.luggage.util.ResultUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -24,6 +26,8 @@ public class UserService {
         user.setUsername(userVO.getPhonenum());
         user.setUserpass(userVO.getPassword());
         user.setUserhimg(PROFILE);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        user.setRegistTime(df.format(new Date()));
         User user1;
         try{
             user1 = userRepository.save(user);

@@ -21,6 +21,8 @@ public class User implements Serializable {
     private String userhimg;
     /*用户昵称*/
     private String nickname;
+    /*注册时间*/
+    private String registTime;
 
     public User() {
     }
@@ -63,5 +65,13 @@ public class User implements Serializable {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getRegistTime() {
+        return registTime;
+    }
+
+    public void setRegistTime(String registTime) {
+        this.registTime = registTime;
     }
 }
