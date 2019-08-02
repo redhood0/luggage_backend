@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 public class UserService {
-    public static String PROFILE = "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3875965517,2977354600&fm=26&gp=0.jpg";
+    public static String PROFILE = "http://imgsrc.baidu.com/forum/pic/item/12c09845d688d43f482a5a3a761ed21b0cf43bbf.jpg";
 
     @Autowired
     private UserRepository userRepository;
@@ -26,6 +26,7 @@ public class UserService {
         user.setUsername(userVO.getPhonenum());
         user.setUserpass(userVO.getPassword());
         user.setUserhimg(PROFILE);
+        user.setNickname(userVO.getPhonenum());
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         user.setRegistTime(df.format(new Date()));
         User user1;
