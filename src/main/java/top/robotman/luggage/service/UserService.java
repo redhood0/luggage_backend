@@ -13,6 +13,10 @@ import top.robotman.luggage.util.ResultUtil;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 @Service
 public class UserService {
@@ -38,10 +42,9 @@ public class UserService {
         return ResultUtil.success(user1);
     }
 
-    public List<User> searchUser(@RequestParam(value = "user_name", required = false,
-            defaultValue = "张少林")String username){
-        List<User> users = userRepository.findByUsername("sb");
-        return users;
+    public User searchUser(String username){
+        User user = userRepository.findFirstByUsername(username);
+        return user;
     }
 
 }
